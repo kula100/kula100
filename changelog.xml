@@ -15,5 +15,18 @@
             </column>
         </createTable>
     </changeSet>
+      <changeSet id="2" author="kula">
+        <!-- Inserting a record into the 'users' table -->
+        <insert tableName="address">
+            <column name="id" value="1"/>
+            <column name="name" value="johndoe"/>
+        </insert>
+        
+        <!-- Insert multiple records -->
+        <insert tableName="users">
+            <column name="id" value="2"/>
+            <column name="name" value="raghu"/>
+      </insert>
+    </changeSet>
 
 </databaseChangeLog>
