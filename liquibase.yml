@@ -1,0 +1,27 @@
+name: Liquibase Update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  liquibase:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11' # Specify your Java version
+
+    - name: Run Liquibase update
+      run: |
+        ./mvnw liquibase:update
+      env:
+        LIQUIBASE_URL: ${{ secrets.LIQUIBASE_URL }}
+        LIQUIBASE_USERNAME: ${{ secrets.LIQUIBASE_USERNAME }}
+        LIQUIBASE_PASSWORD: ${{ secrets.LIQUIBASE_PASSWORD }}
